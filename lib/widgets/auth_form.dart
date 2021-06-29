@@ -10,10 +10,13 @@ class _AuthFormState extends State<AuthForm> {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+        ),
         margin: EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(30),
             child: Form(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -39,8 +42,11 @@ class _AuthFormState extends State<AuthForm> {
                     height: 12,
                   ),
                   ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Login'),
+                    style: ButtonStyle(
+
+                    ),
+                    onPressed: () {},
+                    child: Text('Login'),
                   ),
                   TextButton(
                     onPressed: () {},
