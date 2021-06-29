@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453940839822",
+    "project_id": "chat-app-46847",
+    "storage_bucket": "chat-app-46847.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453940839822:android:529c3bfb79e44b46d210df",
+        "android_client_info": {
+          "package_name": "com.redomic.net.learning6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453940839822-omlchgevn3ghvnh4ts897pq2fd74042f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCkdVTXJ-GqucRZITijurhEhn4gi3N7WQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453940839822-omlchgevn3ghvnh4ts897pq2fd74042f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
