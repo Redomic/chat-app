@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widgets/auth_form.dart';
 
@@ -14,13 +15,12 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     Future<void> _submitAuthForm(
-        String email,
-        String password,
-        String username,
-        bool isLogin,
-        ) async {
+      String email,
+      String password,
+      String username,
+      bool isLogin,
+    ) async {
       UserCredential authResult;
       try {
         if (isLogin) {
@@ -34,7 +34,15 @@ class _AuthScreenState extends State<AuthScreen> {
             password: password,
           );
         }
-      } on PlatformException catch (error) {
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(authResult.user!.uid)
+            .set({
+          'username': username,
+          'email': email,
+        });
+      } on FirebaseAuthException catch (error) {
         var message = 'An error occurred, please check credentials!';
 
         if (error.message != null) {

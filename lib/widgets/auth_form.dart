@@ -66,8 +66,20 @@ class _AuthFormState extends State<AuthForm> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircularProgressIndicator(),
-                        _isLogin ? Text('Logging in') : Text('Signing in')
+                        CircularProgressIndicator(
+                          backgroundColor: Theme.of(context).accentColor,
+                        ),
+                        _isLogin
+                            ? Text(
+                                'Logging in',
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor),
+                              )
+                            : Text(
+                                'Signing up',
+                                style: TextStyle(
+                                    color: Theme.of(context).accentColor),
+                              ),
                       ],
                     ),
                   ),
