@@ -20,6 +20,7 @@ class _AuthScreenState extends State<AuthScreen> {
       String password,
       String username,
       bool isLogin,
+      bool setDetails,
     ) async {
       UserCredential authResult;
       try {
@@ -35,13 +36,16 @@ class _AuthScreenState extends State<AuthScreen> {
           );
         }
 
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(authResult.user!.uid)
-            .set({
-          'username': username,
-          'email': email,
-        });
+        if (setDetails) {
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(authResult.user!.uid)
+              .set({
+            'username': username,
+            'email': email,
+          });
+        }
+
       } on FirebaseAuthException catch (error) {
         var message = 'An error occurred, please check credentials!';
 

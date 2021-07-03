@@ -6,6 +6,7 @@ class AuthForm extends StatefulWidget {
     String password,
     String username,
     bool isLogin,
+    bool setDetails,
   ) submitFn;
 
   AuthForm(this.submitFn);
@@ -26,6 +27,13 @@ class _AuthFormState extends State<AuthForm> {
   var _userName = '';
   var _userPassword = '';
 
+  bool _setDetails() {
+    if (_isLogin) {
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     void _trySubmit() async {
@@ -42,6 +50,7 @@ class _AuthFormState extends State<AuthForm> {
           _userPassword.trim(),
           _userName.trim(),
           _isLogin,
+          _setDetails(),
         );
         setState(() {
           _isLoading = false;
