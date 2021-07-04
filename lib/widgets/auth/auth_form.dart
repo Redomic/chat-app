@@ -59,10 +59,17 @@ class _AuthFormState extends State<AuthForm> {
     }
 
     return Center(
-      child: Card(
-        shape: RoundedRectangleBorder(
+      child: AnimatedContainer(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(30)),
+          color: Colors.white,
         ),
+        duration: Duration(milliseconds: 300),
+        height: _isLogin ? 280 : 330,
+        width: 320,
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: BorderRadius.all(Radius.circular(30)),
+        // ),
         margin: EdgeInsets.all(20),
         child: _isLoading
             ? Container(
