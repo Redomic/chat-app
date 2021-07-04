@@ -10,15 +10,28 @@ class UserImagePicker extends StatefulWidget {
 }
 
 class _UserImagePickerState extends State<UserImagePicker> {
+  File? _pickedImage;
+
+  void _pickImage() async {
+    final picker = ImagePicker();
+    final image = await picker.getImage(source: ImageSource.camera);
+    final imageFile = File(image!.path);
+
+    setState(() {
+      _pickedImage = imageFile;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CircleAvatar(
           radius: 45,
+          backgroundImage: _pickedImage != null ? FileImage(_pickedImage!) : null,
         ),
         TextButton.icon(
-          onPressed: () {},
+          onPressed: _pickImage,
           icon: Icon(Icons.image),
           label: Text('Set Profile Picture'),
         ),
