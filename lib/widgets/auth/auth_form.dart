@@ -59,17 +59,10 @@ class _AuthFormState extends State<AuthForm> {
     }
 
     return Center(
-      child: AnimatedContainer(
-        decoration: BoxDecoration(
+      child: Card(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30)),
-          color: Colors.white,
         ),
-        duration: Duration(milliseconds: 300),
-        height: _isLogin ? 280 : 330,
-        width: 320,
-        // shape: RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.all(Radius.circular(30)),
-        // ),
         margin: EdgeInsets.all(20),
         child: _isLoading
             ? Container(
@@ -109,6 +102,14 @@ class _AuthFormState extends State<AuthForm> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        CircleAvatar(
+                          radius: 45,
+                        ),
+                        TextButton.icon(
+                          onPressed: () {  },
+                          icon: Icon(Icons.image),
+                          label: Text('Set Profile Picture'),
+                        ),
                         TextFormField(
                           key: ValueKey('email'),
                           keyboardType: TextInputType.emailAddress,
