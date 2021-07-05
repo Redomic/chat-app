@@ -9,7 +9,7 @@ class AuthForm extends StatefulWidget {
     String email,
     String password,
     String username,
-    File image,
+    File? image,
     bool isLogin,
     bool setDetails,
   ) submitFn;
@@ -57,7 +57,7 @@ class _AuthFormState extends State<AuthForm> {
             backgroundColor: Theme.of(context).errorColor,
           ),
         );
-        return ;
+        return null;
       }
 
       if (isValid) {
@@ -69,7 +69,7 @@ class _AuthFormState extends State<AuthForm> {
           _userEmail.trim(),
           _userPassword.trim(),
           _userName.trim(),
-          _userImageFile!,
+          _userImageFile,
           _isLogin,
           _setDetails(),
         );

@@ -21,7 +21,7 @@ class _AuthScreenState extends State<AuthScreen> {
       String email,
       String password,
       String username,
-      File image,
+      File? image,
       bool isLogin,
       bool setDetails,
     ) async {
@@ -39,25 +39,37 @@ class _AuthScreenState extends State<AuthScreen> {
           );
         }
 
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child('user_image')
-            .child('${authResult.user!.uid}.jpg');
-        
-        await ref.putFile(image);
+        if (image != null) {
+          final ref = FirebaseStorage.instance
+              .ref()
+              .child('user_image')
+              .child('${authResult.user!.uid}.jpg');
 
-        final url = await ref.getDownloadURL();
+          await ref.putFile(image);
 
-        if (setDetails) {
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(authResult.user!.uid)
-              .set({
-            'username': username,
-            'email': email,
-            'image_url': url,
-          });
+          final url = await ref.getDownloadURL();
+
+          if (setDetails) {
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(authResult.user!.uid)
+                .set({
+              'username': username,
+              'email': email,
+              'image_url': url,
+            });
+          }
         }
+        // if (setDetails) {
+        //   await FirebaseFirestore.instance
+        //       .collection('users')
+        //       .doc(authResult.user!.uid)
+        //       .set({
+        //     'username': username,
+        //     'email': email,
+        //     'image_url': url,
+        //   });
+        // }
       } on FirebaseAuthException catch (error) {
         var message = 'An error occurred, please check credentials!';
 
